@@ -1,0 +1,24 @@
+.headerNav {
+	@apply flex items-center gap-8;
+}
+
+.headerLink {
+	@apply font-medium text-lg relative transition-colors text-gray-500;
+	&:after {
+		content: '';
+		@apply transition-all h-1 bg-green rounded-md absolute -bottom-1 left-0 w-0;
+	}
+	&:hover {
+		@apply text-black;
+		&:after {
+			@apply w-[80%];
+		}
+	}
+
+	&.active {
+		@apply text-black;
+		&:after {
+			@apply w-[80%];
+		}
+	}
+}

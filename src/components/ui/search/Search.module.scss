@@ -1,0 +1,8 @@
+.searchButton {
+	@apply cursor-pointer;
+	top: 4px !important;
+	right: 4px !important;
+	> svg {
+		@apply h-6 w-6;
+	}
+}

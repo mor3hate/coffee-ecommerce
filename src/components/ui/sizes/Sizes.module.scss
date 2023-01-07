@@ -1,0 +1,15 @@
+.sizesContainer {
+	@apply flex items-center gap-2;
+	> p {
+		@apply ml-4 text-2xl text-green;
+	}
+}
+
+.sizeButton {
+	@apply px-2 uppercase text-sm font-medium rounded-md border-2 border-gray-500 border-opacity-70;
+	transform: translateZ(0) perspective(-1px);
+	backface-visibility: hidden;
+	&.active {
+		@apply transition-colors border-green;
+	}
+}
