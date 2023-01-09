@@ -1,21 +1,25 @@
 import { useActions } from '@/hooks/useActions'
+import { IMenuItem } from '@/shared/types/menu.types'
 import { Button, Input, useNumberInput } from '@chakra-ui/react'
+import clsx from 'clsx'
 import Image from 'next/image'
 import { useState } from 'react'
 import Heading from '../heading/Heading'
 import SizesContainer from '../sizes/SizesContainer'
-import { IActiveTrendingItem } from './trending.interface'
 
-import styles from './Trending.module.scss'
+import styles from './Menu.module.scss'
 
-export default function ActiveTrendingItem({
+export default function MenuItem({
 	_id,
 	description,
 	imagePath,
 	title,
-	sizes
-}: IActiveTrendingItem) {
+	sizes,
+	variant
+}: IMenuItem) {
 	const [size, setSize] = useState<string>('Venti')
+
+	const menuVariant = variant === 'menu'
 
 	const {
 		getInputProps,
@@ -40,15 +44,27 @@ export default function ActiveTrendingItem({
 	const { addItem } = useActions()
 
 	return (
-		<article className={styles.activeTrendingItem}>
-			<div className={styles.activeTrendingItemLeft}>
-				<Heading title={title} />
+		<article
+			className={clsx({
+				[styles.trendingItem]: !menuVariant,
+				[styles.menuItem]: menuVariant
+			})}
+		>
+			<div
+				className={clsx({
+					[styles.menuItemContent]: menuVariant,
+					[styles.trendingItemLeft]: !menuVariant
+				})}
+			>
+				{menuVariant ? <h3>{title}</h3> : <Heading title={title} />}
 				<SizesContainer
 					sizes={sizes}
 					onClick={setSize}
 					size={size}
+					isMenu={menuVariant}
 					activePrice={activePrice}
 				/>
+
 				<p>{description}</p>
 				<div className={styles.amountWrapper}>
 					<div>
@@ -84,7 +100,12 @@ export default function ActiveTrendingItem({
 					</Button>
 				</div>
 			</div>
-			<div className={styles.activeTrendingImg}>
+			<div
+				className={clsx({
+					[styles.menuItemImg]: menuVariant,
+					[styles.trendingImg]: !menuVariant
+				})}
+			>
 				<Image
 					src='/coffeeSeedBg.jpg'
 					alt=''

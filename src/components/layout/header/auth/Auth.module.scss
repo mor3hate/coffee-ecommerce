@@ -8,17 +8,3 @@
 		opacity-70 hover:opacity-100 hover:border-green;
 	}
 }
-
-.authButton {
-	@apply relative;
-	border-radius: 50% !important;
-	padding: 0 !important;
-	width: 2.5rem !important;
-	height: 2.5rem !important;
-	> svg {
-		@apply h-7 w-7;
-	}
-	> li {
-		@apply absolute top-0 right-0 bg-green text-white rounded-full w-3.5 h-3.5 text-xs list-none flex justify-center items-center font-medium;
-	}
-}

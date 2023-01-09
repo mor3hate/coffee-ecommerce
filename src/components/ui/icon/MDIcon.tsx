@@ -1,7 +1,7 @@
 import { Icon } from '@chakra-ui/react'
 import * as MdIcons from 'react-icons/md'
 
-type typeMDIcon = {
+export type typeMDIcon = {
 	name: keyof typeof MdIcons
 }
 

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { ITrendingContainer } from './trending.interface'
 import TrendingItem from './TrendingItem'
-import ActiveTrendingItem from './ActiveTrendingItem'
 import Image from 'next/image'
+import MenuItem from '../menu/MenuItem'
 
 import styles from './Trending.module.scss'
 
@@ -24,12 +24,13 @@ export default function TrendingContainer({
 				className={styles.backImg}
 			/>
 
-			<ActiveTrendingItem
+			<MenuItem
 				_id={activeElement._id}
 				description={activeElement.description}
 				imagePath={activeElement.imagePath}
 				title={activeElement.title}
 				sizes={activeElement.sizes}
+				variant='trending'
 			/>
 
 			<div>

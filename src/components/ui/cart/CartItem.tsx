@@ -12,7 +12,7 @@ import {
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { ICartItem } from './cart.interface'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import styles from './Cart.module.scss'
 
 export default function CartItem({
@@ -56,14 +56,14 @@ export default function CartItem({
 
 	return (
 		<motion.div
-			className='mt-2'
-			initial={{ opacity: 1, x: 0, height: 141.2 }}
+			initial={{ opacity: 1, x: 0, height: 142, marginTop: 8 }}
 			animate={
 				!isShow
 					? {
 							opacity: 0,
 							x: '-100%',
-							height: 0
+							height: 0,
+							marginTop: 0
 					  }
 					: {}
 			}
@@ -75,7 +75,7 @@ export default function CartItem({
 				overflow='hidden'
 				variant='outline'
 			>
-				<div className='relative overflow-hidden w-20 h-20'>
+				<div className='relative overflow-hidden w-20 h-16 self-center'>
 					<Image src={imagePath} alt={title} fill sizes='5rem' />
 				</div>
 				<Stack>

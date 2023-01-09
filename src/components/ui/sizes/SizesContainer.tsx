@@ -3,18 +3,25 @@ import SizeItem from './SizeItem'
 import { ISizesContainer } from './sizes.interface'
 import styles from './Sizes.module.scss'
 
+import clsx from 'clsx'
+
 export default function SizesContainer({
 	onClick,
 	sizes,
 	size,
-	activePrice
+	activePrice,
+	isMenu
 }: ISizesContainer) {
 	return (
-		<div className={styles.sizesContainer}>
+		<div
+			className={clsx(styles.sizesContainer, {
+				[styles.sizesContainerMenu]: isMenu
+			})}
+		>
 			{sizes.map(s => (
 				<SizeItem name={s.name} key={s.name} onClick={onClick} size={size} />
 			))}
-			<p>{currencyConverter(activePrice)}</p>
+			{!isMenu && <p>{currencyConverter(activePrice)}</p>}
 		</div>
 	)
 }

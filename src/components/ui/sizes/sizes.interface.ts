@@ -1,5 +1,5 @@
+import { ISize } from './../../../shared/types/menu.types'
 import { Dispatch, SetStateAction } from 'react'
-import { ISize } from '../trending/trending.interface'
 
 export interface ISizeItem extends Pick<ISize, 'name'> {
 	size: string
@@ -7,6 +7,7 @@ export interface ISizeItem extends Pick<ISize, 'name'> {
 }
 
 export interface ISizesContainer extends Omit<ISizeItem, 'name'> {
+	isMenu: boolean
 	sizes: Pick<ISizeItem, 'name'>[]
 	activePrice: number
 }

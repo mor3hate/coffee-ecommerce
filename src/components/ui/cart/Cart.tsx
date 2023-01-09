@@ -1,4 +1,5 @@
 import { currencyConverter } from '@/helpers/currencyConverter'
+import { useActions } from '@/hooks/useActions'
 import {
 	Button,
 	Drawer,
@@ -18,11 +19,14 @@ export default function Cart({ isOpen, onClose, cartItems }: ICart) {
 		0
 	)
 
+	const { removeAll } = useActions()
+
 	return (
 		<Drawer isOpen={isOpen} placement='right' onClose={onClose}>
 			<DrawerOverlay />
 			<DrawerContent>
 				<DrawerCloseButton />
+
 				<DrawerHeader>Your cart</DrawerHeader>
 
 				<DrawerBody>
@@ -37,12 +41,25 @@ export default function Cart({ isOpen, onClose, cartItems }: ICart) {
 							sizePrice={c.sizePrice}
 						/>
 					))}
+
+					{cartItems.length > 0 && (
+						<Button
+							variant='ghost'
+							color='red.500'
+							title='Remove all'
+							mt='5'
+							onClick={() => removeAll()}
+						>
+							Remove all
+						</Button>
+					)}
 				</DrawerBody>
 
 				<DrawerFooter>
 					<div className='mr-auto font-bold'>
 						Total: {currencyConverter(totalPrice)}
 					</div>
+
 					<Button
 						variant='solid'
 						boxShadow='base'

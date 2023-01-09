@@ -1,0 +1,16 @@
+.svgButton {
+	@apply relative;
+	border-radius: 50% !important;
+	padding: 0 !important;
+	width: 2.5rem !important;
+	height: 2.5rem !important;
+	> svg {
+		@apply h-7 w-7;
+	}
+	> li {
+		@apply absolute top-0 right-0 bg-green text-white rounded-full w-4 h-4 text-xs list-none font-medium flex items-center justify-center;
+		> span {
+			@apply py-[0.1rem];
+		}
+	}
+}

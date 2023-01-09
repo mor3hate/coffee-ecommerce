@@ -6,10 +6,15 @@
 }
 
 .sizeButton {
-	@apply px-2 uppercase text-sm font-medium rounded-md border-2 border-gray-500 border-opacity-70;
-	transform: translateZ(0) perspective(-1px);
-	backface-visibility: hidden;
+	@apply px-2 py-0.5 uppercase text-sm font-medium rounded-md border-2 border-gray-500 border-opacity-70;
 	&.active {
 		@apply transition-colors border-green;
+	}
+}
+
+.sizesContainerMenu {
+	@apply gap-3 my-2;
+	> button {
+		@apply text-xs p-0.5;
 	}
 }
